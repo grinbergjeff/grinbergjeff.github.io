@@ -1,16 +1,88 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
-	//introduction();
+	introduction();
+	whereIsScrollBar();
 	displayActive();
 	clickMenuActive();
 });
 
 /*Functions*/
 function introduction() {
-	var doNotDisplay = ['contact','portfolio','about-me','menu']
-	for (var i=0; i < doNotDisplay.length; i++) {
-		document.getElementById(doNotDisplay[i]).style.display='none';
-	}
+	document.getElementById('menu').style.display='none';
+	var downArrow = document.getElementById('down');
+	downArrow.onclick = function() {
+		var to = document.querySelector("#portfolio").offsetTop;
+		var clickMe = document.body;
+		scrollTo(clickMe, to, 600);	
+	};
 }
+
+function whereIsScrollBar() {
+	document.addEventListener("scroll",function() {
+		var scrollPos = window.pageYOffset;
+		var menuSelector = document.getElementById('menu');
+		var menuStyle = menuSelector.style;
+		//Display menu when not in intro-section
+		function displayMenu() {
+			var mainLogoHeight = document.getElementById("logo-canvas").offsetTop;
+			if (scrollPos >= mainLogoHeight) {
+				if(menuStyle.display === 'inline') {
+					menuStyle.display='inline'; // Counteract the constant re-animation on a new scroll
+				}
+				else {
+					fadeIn(menuSelector,'inline');	
+				}
+			}
+			else {
+					fadeOut(menuSelector);
+			}
+		}
+		displayMenu();
+		//Change active section when scrolled to it
+		function scrollActive(section, menuSelector) {
+			var sectionID = document.getElementById(section);
+			var sectionPos = sectionID.offsetTop;
+			var menuID = document.getElementById(menuSelector);
+			if (scrollPos >= sectionPos) {
+				var activeElement = document.getElementsByClassName('active');
+				for (var i = 0; i < activeElement.length; i++) {
+					activeElement[i].setAttribute('class', '');
+				}
+				menuID.setAttribute('class', 'active');
+			}
+		}
+		scrollActive('portfolio', 'menu-p');
+		scrollActive('about-me', 'menu-am');
+		scrollActive('contact', 'menu-c');
+	})
+}
+
+//Pure JS version of fadeOut
+function fadeOut(element) {
+	element.style.opacity = 1;
+	
+	(function fade() {
+    if ((element.style.opacity -= .1) < 0) {
+      element.style.display = "none";
+    } else {
+      requestAnimationFrame(fade);
+    }
+  })();
+}
+
+//Pure JS version of FadeIn
+function fadeIn(element, display) {
+	element.style.opacity = 0;
+	element.style.display = display || "block";
+	
+	(function fade() {
+    var val = parseFloat(element.style.opacity);
+    if (!((val += .1) > 1)) {
+      element.style.opacity = val;
+      requestAnimationFrame(fade);
+    }
+  })();
+}
+
 function clickMenuActive(clickedButton) {
 	//Function to grab information of event/element
 	function getEventTarget(e) {
@@ -31,6 +103,7 @@ function clickMenuActive(clickedButton) {
 		displayActive();
 	}
 }
+
 function displayActive() {
 	var activeElement = document.getElementsByClassName('active');
 	for (var i = 0; i < activeElement.length; i++) {
@@ -50,6 +123,7 @@ function displayActive() {
 		}
 	}
 }
+
 //Function to scroll to section
 function scrollTo(element, to, duration) {
     if (duration < 0) return;
