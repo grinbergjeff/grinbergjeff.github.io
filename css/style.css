@@ -1,0 +1,147 @@
+/*Portfolio page coded by Jeffrey Grinberg*/
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: 'Varela Round', sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+/*Aways There*/
+#container {
+	height: 100%;
+}
+.title {
+	text-align: center;	
+	color: black;
+	font-size: 65px;
+}
+/*Animation Section*/
+#down:hover, .fa.fa-envelope-o.fa-3x:hover, .fa.fa-twitter.fa-3x:hover, .fa.fa-linkedin.fa-3x:hover, .fa.fa-github.fa-3x:hover {
+	cursor: pointer;
+	z-index: 1000;
+	-webkit-animation-name: pulse;
+    animation-name: pulse;
+	animation-duration: .7s;
+	animation-timing-function: ease-out;
+}
+@-webkit-keyframes pulse {
+	 0% { -webkit-transform: scale(1); }
+    50% { -webkit-transform: scale(1.1); }
+    100% { -webkit-transform: scale(1); }	
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+/*Menu*/
+#menu {
+	width: 100%;
+	z-index: 4;
+	bottom: 0;
+	position: fixed;
+	margin-left: 10px;
+	margin-top: 40%;
+	text-align: center;
+}
+#menu-buttons {
+	color: black;
+	list-style: none;
+	margin-top: 80px;
+	margin-left: -66px;
+	display: inline-block;
+	text-align: center;
+}
+.active {
+	background: rgba(39,60,82,.4);	
+}
+li {
+	font-size: 16px;
+	padding: 10px 20px 10px 20px;
+	background: rgba(39,62,84,0.0001);
+	display: inline-block;
+}
+#menu-am:hover, #menu-p:hover, #menu-c:hover{
+	background: rgba(39, 60, 74,.2);
+	cursor: pointer;
+	animation-name: change-height;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
+@keyframes change-height {
+	50% {height: 125%};
+}
+/*Intro Section*/
+#intro-section {
+	text-align: center;
+}
+#intro-section, #about-me, #portfolio, #contact {
+	height: 100%;
+	overflow: hidden;
+}
+#name {
+	color: black;
+}
+/*Logo Section*/
+#logo-canvas {
+	background-color: black;
+	width: 125px;
+	height: 125px;
+	margin: 0 auto;
+	margin-top: 120px;
+}
+#g {
+	font-size: 70px;
+	color: white;
+	padding-top: 15px;
+}
+#dot {
+	margin-top: -182px;
+	padding-left: 28px;
+	font-size: 60px;
+	color: white;
+}
+#down {
+	color: black;
+	cursor: pointer;
+}
+/*About Me Section*/
+#para-container {
+	color: black;
+	width: 50%;
+	height: 50%;
+	margin: 0 auto;
+	margin-top: 120px;
+	padding: 2px;
+}
+.am-p {
+	font-size: 120%;	
+}
+#love {
+	color: red;	
+}
+/*Portfolio Section*/
+
+/*Contact Section*/
+a {
+	color: black;
+	text-decoration: none;
+}
+a:visited {
+	color: black;	
+}
+.contact-images {
+	list-style: none;
+	text-align: center;
+}
+#contact-div {
+	margin: 0 auto;
+	width: 50%;
+	margin-top: 15%;
+	text-align: center;
+	z-index: 200;
+}
+.contact-images p {
+	font-size: 120%;
+}
