@@ -1,3 +1,10 @@
+$(document).ready(function() {
+	$('.thumbs').portfolio({
+                    cols: 4,
+                    transition: 'slideDown'
+                });
+});
+
 document.addEventListener("DOMContentLoaded", function(event) { 
 	introduction();
 	whereIsScrollBar();
