@@ -17,7 +17,7 @@ html, body {
 	font-size: 65px;
 }
 /*Animation Section*/
-#down:hover, .fa.fa-envelope-o.fa-3x:hover, .fa.fa-twitter.fa-3x:hover, .fa.fa-linkedin.fa-3x:hover, .fa.fa-github.fa-3x:hover {
+#down:hover, .fa.fa-envelope-o.fa-lg:hover, .fa.fa-twitter.fa-lg:hover, .fa.fa-linkedin.fa-lg:hover, .fa.fa-github.fa-lg:hover {
 	cursor: pointer;
 	z-index: 1000;
 	-webkit-animation-name: pulse;
@@ -40,7 +40,6 @@ html, body {
 	width: 70px;
 	z-index: 99999;
 	position: fixed;
-	margin-left: 10px;
 }
 #menu-logo {
 	cursor: pointer;
@@ -82,18 +81,36 @@ html, body {
 #menu-am:hover, #menu-p:hover, #menu-c:hover{
 	background: rgba(255, 255, 255,.3);
 	cursor: pointer;
-	animation-name: change-height;
-	animation-duration: 2s;
-	animation-iteration-count: infinite;
 }
-@keyframes change-height {
-	50% {height: 125%};
+/*Contact Div*/
+#contact-div {
+	width: 220px;
+	text-align: center;
+	padding-left: 10px;
+	position: fixed;
+	background-color: black;
+	z-index: 9999;
+}
+a {
+	color: white;
+	text-decoration: none;
+}
+a:visited {
+	color: white;	
+}
+.contact-images {
+	list-style: none;
+	text-align: center;
+}
+.contact-images li {
+	display: inline;
+	padding: 5px 10px 5px 10px;
 }
 /*Intro Section*/
 #intro-section {
 	text-align: center;
 }
-#intro-section, #about-me, #portfolio, #contact {
+#intro-section, #about-me{
 	height: 100%;
 	overflow: hidden;
 }
@@ -125,13 +142,16 @@ html, body {
 	cursor: pointer;
 }
 /*About Me Section*/
+#about-me {
+	margin-top: 50px;
+}
 #para-container {
 	color: black;
-	width: 50%;
+	width: 90%;
 	height: 50%;
 	margin: 0 auto;
-	margin-top: 120px;
 	padding: 2px;
+	padding-top: 200px;
 }
 .am-p {
 	font-size: 120%;	
@@ -139,30 +159,19 @@ html, body {
 #love {
 	color: red;	
 }
-/*Portfolio Section*/
-
-/*Contact Section*/
-a {
+/*Portfolio Section (aside from plug-in files)*/
+#portfolio {
+	height: 100%;	
+}
+.btn.btn-primary {
+	border: 1px solid black;
+	padding: 2px;
 	color: black;
-	text-decoration: none;
 }
-a:visited {
-	color: black;	
-}
-.contact-images {
-	list-style: none;
-	text-align: center;
-	margin-left: -15px;
-}
-.contact-images li {
-	display: inline-flex;
-	padding: 10px 20px 10px 10px;
-}
-#contact-div {
-	margin: 0 auto;
-	width: 50%;
-	margin-top: 15%;
-	text-align: center;
-	z-index: 200;
+.skill {
+	background-color: black;
+	color: white;
+	padding: 4px;
+	margin-left: 5px;
 }
 

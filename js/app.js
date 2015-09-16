@@ -15,37 +15,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
 /*Functions*/
 function introduction() {
 	document.getElementById('menu').style.display='none';
+	document.getElementById('contact-div').style.display='none';
 	var downArrow = document.getElementById('down');
 	downArrow.onclick = function() {
-		var to = document.querySelector("#portfolio").offsetTop;
+		var to = document.querySelector("#about-me").offsetTop;
 		var clickMe = document.body;
 		scrollTo(clickMe, to, 600);	
 	};
 }
 
-function whereIsScrollBar() {
-	document.addEventListener("scroll",function() {
-		var scrollPos = window.pageYOffset;
-		var menuSelector = document.getElementById('menu');
-		var menuStyle = menuSelector.style;
-		//Display menu when not in intro-section
-		function displayMenu() {
-			var mainLogoHeight = document.getElementById("logo-canvas").offsetTop;
-			if (scrollPos >= mainLogoHeight) {
-				if(menuStyle.display === 'inline') {
-					menuStyle.display='inline'; // Counteract the constant re-animation on a new scroll
-				}
-				else {
-					fadeIn(menuSelector,'inline');	
-				}
-			}
-			else {
-					fadeOut(menuSelector);
-			}
-		}
-		displayMenu();
-		//Change active section when scrolled to it
-		function scrollActive(section, menuSelector) {
+function scrollActive(section, menuSelector) {
 			var sectionID = document.getElementById(section);
 			var sectionPos = sectionID.offsetTop;
 			var menuID = document.getElementById(menuSelector);
@@ -57,9 +36,36 @@ function whereIsScrollBar() {
 				menuID.setAttribute('class', 'active');
 			}
 		}
+
+function whereIsScrollBar() {
+	document.addEventListener("scroll",function() {
+		var scrollPos = window.pageYOffset;
+		var menuSelector = document.getElementById('menu');
+		var menuStyle = menuSelector.style;
+		var contactDiv = document.getElementById('contact-div');
+		var contactStyle = contactDiv.style;
+		//Display menu when not in intro-section
+		function displayMenu() {
+			var mainLogoHeight = document.getElementById("logo-canvas").offsetTop;
+			if (scrollPos >= mainLogoHeight) {
+				if(menuStyle.display === 'inline') {
+					menuStyle.display='inline'; // Counteract the constant re-animation on a new scroll
+					contactStyle.display='inline';
+				}
+				else {
+					fadeIn(menuSelector,'inline');	
+					fadeIn(contactDiv,'inline');
+				}
+			}
+			else {
+					fadeOut(menuSelector);
+					fadeOut(contactDiv);
+			}
+		}
+		displayMenu();
+		//Change active section when scrolled to it
 		scrollActive('portfolio', 'menu-p');
 		scrollActive('about-me', 'menu-am');
-		scrollActive('contact', 'menu-c');
 	})
 }
 
@@ -122,10 +128,6 @@ function displayActive() {
 		}
 		else if (activeElementID === 'menu-p') {
 			var to = document.querySelector("#portfolio").offsetTop;
-			scrollTo(clickMe, to, 600);
-		}
-		else if (activeElementID === 'menu-c') {
-			var to = document.querySelector("#contact").offsetTop;
 			scrollTo(clickMe, to, 600);
 		}
 	}
