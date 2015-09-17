@@ -28,6 +28,7 @@ function scrollActive(section, menuSelector) {
 			var sectionID = document.getElementById(section);
 			var sectionPos = sectionID.offsetTop;
 			var menuID = document.getElementById(menuSelector);
+			var scrollPos = window.pageYOffset;
 			if (scrollPos >= sectionPos) {
 				var activeElement = document.getElementsByClassName('active');
 				for (var i = 0; i < activeElement.length; i++) {
@@ -64,8 +65,8 @@ function whereIsScrollBar() {
 		}
 		displayMenu();
 		//Change active section when scrolled to it
-		scrollActive('portfolio', 'menu-p');
 		scrollActive('about-me', 'menu-am');
+		scrollActive('portfolio', 'menu-p');
 	})
 }
 
