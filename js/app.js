@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	introduction();
+	displayActive();
 	$('.thumbs').portfolio({
                     cols: 4,
                     transition: 'slideDown'
@@ -6,9 +8,8 @@ $(document).ready(function() {
 });
 
 document.addEventListener("DOMContentLoaded", function(event) { 
-	introduction();
 	whereIsScrollBar();
-	displayActive();
+	//displayActive();
 	clickMenuActive();
 });
 
@@ -16,12 +17,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function introduction() {
 	document.getElementById('menu').style.display='none';
 	document.getElementById('contact-div').style.display='none';
-	var downArrow = document.getElementById('down');
-	downArrow.onclick = function() {
-		var to = document.querySelector("#about-me").offsetTop;
-		var clickMe = document.body;
-		scrollTo(clickMe, to, 600);	
-	};
+	$('#down').on('click',function() {
+		$('body, html').animate({
+			scrollTop: $('#about-me').offset().top}, 1000);
+	});
 }
 
 function scrollActive(section, menuSelector) {
@@ -125,17 +124,18 @@ function displayActive() {
 		var clickMe = document.body;
 		if (activeElementID === 'menu-am') {
 			var to = document.querySelector("#about-me").offsetTop;
-			scrollTo(clickMe, to, 600);
+		$('body, html').animate({
+			scrollTop: $('#about-me').offset().top}, 1000);
 		}
 		else if (activeElementID === 'menu-p') {
-			var to = document.querySelector("#portfolio").offsetTop;
-			scrollTo(clickMe, to, 600);
+		$('body, html').animate({
+			scrollTop: $('#portfolio').offset().top}, 1000);
 		}
 	}
 }
 
 //Function to scroll to section
-function scrollTo(element, to, duration) {
+/*function scrollTo(element, to, duration) {
     if (duration < 0) return;
     var difference = to - element.scrollTop;
     var perTick = difference / duration * 10;
@@ -145,4 +145,4 @@ function scrollTo(element, to, duration) {
         if (element.scrollTop === to) return;
         scrollTo(element, to, duration - 10);
     }, 10);
-}
+}*/

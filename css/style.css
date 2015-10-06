@@ -163,7 +163,10 @@ a:visited {
 /*Portfolio Section (aside from plug-in files)*/
 #portfolio {
 	height: 100%;
-	padding-left: 60px;
+	padding-left: 60px; 
+}
+#portfolio-content {
+	padding-top: 54px;
 }
 .btn.btn-primary {
 	border: 1px solid black;
